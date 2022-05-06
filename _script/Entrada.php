@@ -1,20 +1,12 @@
 <?php
-/*------------------------------------------------------------------------------
- * _script/Produto.php
- *
- *
- *
- *
- *
- *
- *
- *----------------------------------------------------------------------------*/
 
-class Cliente{
-	public $idcliente;
+
+class Entrada{
+	public $identrada;
 	public $nome;
-	public $CPF;
-	public $telefone;
+	public $valor;
+	public $quantidade;
+	public $data;
 }
 
 ?>

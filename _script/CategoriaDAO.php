@@ -19,7 +19,6 @@ class CategoriaDAO{
 
 	/* Variável privada que armazena o identificador da conexão com o banco */
 	private $conexao = null;
-
 		/* Construtor da classe: estabelece conexão com o banco */
 		/* Utiliza o método estático da classe GerenciadorConexao */
 		public function __construct(){

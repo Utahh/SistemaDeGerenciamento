@@ -2,7 +2,7 @@
 
 	//Exclui usuário caso a variável idExcluir esteja setada
 	if( isset($_POST["idExcluir"]) ){
-		$funcionarioDao = new funcionarioDAO();
+		$funcionarioDao = new FuncionarioDAO();
 		$funcionarioDao->excluir( $_POST["idExcluir"] );
 
 		//flag para sinalizar que usuario foi excluído
@@ -15,13 +15,13 @@
 		isset($_POST["nUsuarioEditar"]) &&
 		isset($_POST["nPermissaoEditar"]) ){
 
-			$funcionario = new funcionario();
+			$funcionario = new Funcionario();
 			$funcionario->idusuario = $_POST["nIdEditar"];
 			$funcionario->nome = $_POST["nNomeEditar"];
 			$funcionario->usuario = strtolower($_POST["nEmailEditar"]);
 			$funcionario->admin = $_POST["nPermissaoEditar"];
 
-			$funcionarioDao = new funcionarioDAO();
+			$funcionarioDao = new FuncionarioDAO();
 			$funcionarioDao->atualizarSemSenha( $funcionario);
 
 			$inserirSucesso = true;
@@ -113,7 +113,7 @@
 		<tbody>
 		<?php
 			if(!$funcionarioDao)
-				$funcionarioDao = new funcionarioDAO();
+				$funcionarioDao = new FuncionarioDAO();
 
 			if( isset($_GET["nPesquisa"]) )
 				$lista = $funcionarioDao->buscaPorNome($_GET["nPesquisa"]);

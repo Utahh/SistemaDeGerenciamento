@@ -18,23 +18,23 @@ $senha = $_POST["nSenha"];
 
 
 /* Cria novo objeto da classe UsuarioDAO */
-$FuncionarioDao = new funcionarioDAO();
+$funcionarioDao = new FuncionarioDAO();
 
 /* Manda buscar os dados do usuário com e-mail igual ao recebido de index.php*/
 /* Se não encontrar nada no banco de dados, retorna null */
-$Funcionario = $FuncionarioDao->buscaPorUsuario($Funcionario);
+$funcionario = $funcionarioDao->buscaPorUsuario($funcionario);
 
 
 
 /* Testa se encontrou algum usuário cadastrado com aquele e-mail */
-if($Funcionario != null){
+if($funcionario != null){
 	/* Criptografa a senha recebida de index.php pra poder comparar */
 	$senhaCriptografada = md5($senha);
 
 	/* Agora testa se a senha recebida é igual à que consta do banco de dados*/
-	if($senhaCriptografada == $Funcionario->senha){
+	if($senhaCriptografada == $funcionario->senha){
 		/* Seta variáveis de sessão com informações do usuario logado*/
-		$_SESSION['id_funcionario_logado'] = $Funcionario->idfuncionario;
+		$_SESSION['id_funcionario_logado'] = $funcionario->idfuncionario;
 		$_SESSION['nome_funcionario_logado'] = $funcionario->nome;
 		$_SESSION['usuario_funcionario_logado'] = $funcionario->usuario;
 		$_SESSION['permissao_funcionario_logado'] = $funcionario->admin;

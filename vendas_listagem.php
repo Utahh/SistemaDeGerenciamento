@@ -2,7 +2,7 @@
 session_start(['login']);
 
 /* Inclui classe UsuarioDAO */
-require_once("_script/ProdutoDAO.php");
+require_once("_script/VendaDAO.php");
 
 /* Testa se a variável de sessão está setada corretamente */
 /* Caso contrário, gera erro acusando que o login não foi feito */
@@ -22,19 +22,19 @@ if( !isset($_SESSION["nome_usuario_logado"]) )
 <body>
 <div id="interface">
 
-	<h1>Produtos Disponíveis</h1>
+	<h1>Vendas Disponíveis</h1>
 
 
-	<!-- Somente usuários com permissão Admin podem cadastrar novo produto -->
+	<!-- Somente usuários com permissão Admin podem cadastrar novo venda -->
 	<?php if(isset($_SESSION["permissao_usuario_logado"]) && $_SESSION["permissao_usuario_logado"] == "1"){ ?>
 		<a href="usuario_cadastrar.php">Cadastrar</a><br/><br/>
 	<?php } ?>
 
 
-	<!-- Tabela que lista produtos cadastrados no sistema -->
+	<!-- Tabela que lista vendas cadastrados no sistema -->
 	<table>
 		<tr>
-			<th>Produto</th>
+			<th>venda</th>
 			<th>Categoria</th>
 			<th>Tipo</th>
 			<th>Custo</th>
@@ -42,25 +42,25 @@ if( !isset($_SESSION["nome_usuario_logado"]) )
 			<th>Quantidade</th>
 			<th>Ação</th>
 		</tr>
-		<!-- Busca todos produtos cadastrados no banco-->
+		<!-- Busca todos vendas cadastrados no banco-->
 		<?php  
-			$produtoDao = new ProdutoDAO();
-			$lista = $produtoDao->listar();
+			$vendaDao = new VendaDAO();
+			$lista = $vendaDao->listar();
 		?>
 		<!-- Imprime na tabela em HTML os usuários utilizando o PHP -->
 		<?php foreach ($lista as $indice => $usuario) { ?>
 			<tr>
-				<td><?php echo $produto->nome; ?></td>
-				<td><?php echo $produto->categoria; ?></td>
-				<td><?php echo $produto->tipo; ?></td>
-				<td><?php echo $produto->custo; ?></td>
-				<td><?php echo $produto->preco; ?></td>
-				<td><?php echo $produto->quantidade; ?></td>
+				<td><?php echo $venda->nome; ?></td>
+				<td><?php echo $venda->categoria; ?></td>
+				<td><?php echo $venda->tipo; ?></td>
+				<td><?php echo $venda->custo; ?></td>
+				<td><?php echo $venda->preco; ?></td>
+				<td><?php echo $venda->quantidade; ?></td>
 				<!-- Imprime links (opções) na última coluna para editar ou excluir usuário -->
 				<td>
-					<a href="produto_editar.php?idproduto=<?php echo $produto->idproduto; ?>">Editar</a>
+					<a href="venda_editar.php?idvenda=<?php echo $venda->idvenda; ?>">Editar</a>
 					&nbsp;&nbsp;
-					<a href="produto_excluir.php?idproduto=<?php echo $produto->idproduto; ?>">Excluir</a>
+					<a href="venda_excluir.php?idvenda=<?php echo $venda->idvenda; ?>">Excluir</a>
 				</td>
 			</tr>
 		<?php } ?>

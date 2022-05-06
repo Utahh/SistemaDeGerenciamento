@@ -10,7 +10,7 @@
  *
  *----------------------------------------------------------------------------*/
 
-class Produtos{
+class Produto{
 	public $id_produtos;
 	public $nome_produto;
 	public $quantidade;

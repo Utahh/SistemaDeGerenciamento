@@ -5,7 +5,7 @@ include 'Funcionario.php';
 include_once "GerenciadorConexao.php";
 
 
-class funcionarioDAO{
+class FuncionarioDAO{
 
 	/* Variável privada que armazena o identificador da conexão com o banco */
 	private $conexao = null;
@@ -97,7 +97,7 @@ class funcionarioDAO{
  			/* Loop que que vai pegando linha por linha do resultado obtido */
  			while( $row = mysqli_fetch_array($result, MYSQLI_ASSOC) ){
  				//Cria nova instância da classe Usuario
- 				$retorno = new funcionario();
+ 				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
  				$retorno->idusuario = $row["idfuncionario"];
  				$retorno->nome = $row["nome"];
@@ -128,7 +128,7 @@ class funcionarioDAO{
  			/* Se encontrou algo, pega todos os campos do resultado obtido */
  			if( $row = mysqli_fetch_array($result, MYSQLI_ASSOC) ){
  				//Cria nova instância da classe Usuario
- 				$retorno = new funcionario();
+ 				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
  				$retorno->idusuario = $row["idfuncionario"];
  				$retorno->nome = $row["nome"];
@@ -157,7 +157,7 @@ class funcionarioDAO{
  			/* Loop que que vai pegando linha por linha do resultado obtido */
  			while( $row = mysqli_fetch_array($result, MYSQLI_ASSOC) ){
  				//Cria nova instância da classe Usuario
- 				$retorno = new funcionario();
+ 				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
  				$retorno->idfuncionario= $row["idfuncionario"];
  				$retorno->nome = $row["nome"];
@@ -190,7 +190,7 @@ class funcionarioDAO{
  			/* Se encontrou algo, pega todos os campos do resultado obtido */
  			if( $row = mysqli_fetch_array($result, MYSQLI_ASSOC) ){
  				//Cria nova instância da classe Usuario
- 				$retorno = new funcionario();
+ 				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
  				$retorno->idfuncionario = $row["idfuncionario"];
  				$retorno->nome = $row["nome"];

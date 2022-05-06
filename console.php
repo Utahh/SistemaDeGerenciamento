@@ -23,6 +23,7 @@ require_once("_script/CategoriaDAO.php");
 ?>
 
 
+
 <!DOCTYPE html>
 <html lan="pt-br">
 <head>

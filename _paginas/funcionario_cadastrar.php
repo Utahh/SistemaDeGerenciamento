@@ -1,9 +1,9 @@
 <?php
 
 	if( isset($_GET["action"]) && ($_GET["action"] == "Cadastrar") ){
-		$funcionario = new funcionario();
+		$funcionario = new Funcionario();
 		$funcionario->nome = $_POST["nNome"];
-		$funcionario->usuario = strtolower($_POST["nEmail"]);
+		$funcionario->usuario = strtolower($_POST["nUsuario"]);
 		$funcionario->senha = $_POST["nSenha"];
 
 		if( $_POST["nPermissao"] == "normal" )
@@ -11,7 +11,7 @@
 		elseif( $_POST["nPermissao"] == "admin" )
 			$funcionario->admin = "1";
 
-		$funcionarioDao = new funcionarioDAO();
+		$funcionarioDao = new FuncionarioDAO();
 		$funcionarioDao->inserir($funcionario);
 
 		$inserirSucesso = true;
