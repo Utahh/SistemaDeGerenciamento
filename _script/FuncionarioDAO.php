@@ -37,7 +37,7 @@ class FuncionarioDAO{
  		public function inserir($funcionario){
 
  			/* Primeiro cria a query do MySQL */
- 			$insert_query =	"INSERT INTO funcionario (idfuncionario, nome, sobrenome, usuario, senha, admin) VALUES (DEFAULT,'".$funcionario->nome."','".$funcionario->sobrenome."','".$funcionario->usuario."','".md5($funcionario->senha)."',".$funcionario->admin.")";
+ 			$insert_query =	"INSERT INTO funcionario (id_funcionario, nome_funcionario, usuario, senha, admin) VALUES (DEFAULT,'".$funcionario->nome."','".$funcionario->usuario."','".md5($funcionario->senha)."',".$funcionario->admin.")";
 			
 			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $insert_query)
@@ -49,7 +49,7 @@ class FuncionarioDAO{
  		public function atualizar($funcionario){
  			
  			/* Primeiro cria a query do MySQL */
- 			$update_query =	"UPDATE funcionario SET nome='".$funcionario->nome."', sobrenome='".$funcionario->sobrenome."', usuario='".$funcionario->usuario."', senha = '".md5($funcionario->senha)."', admin= ".$funcionario->admin." WHERE idfuncionario=".$funcionario->idfuncionario;
+ 			$update_query =	"UPDATE funcionario SET nome_funcionario='".$funcionario->nome."', usuario='".$funcionario->usuario."', senha = '".md5($funcionario->senha)."', admin= ".$funcionario->admin." WHERE id_funcionario=".$funcionario->idfuncionario;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $update_query)
@@ -61,7 +61,7 @@ class FuncionarioDAO{
  		public function atualizarSemSenha($funcionario){
 
  			/* Primeiro cria a query do MySQL */
- 			$update_query =	"UPDATE usuario SET nome='".$funcionario->nome."', sobrenome='".$funcionario->sobrenome."', email='".$funcionario->email."', admin= ".$funcionario->admin." WHERE idusuario=".$funcionario->idfuncionario;
+ 			$update_query =	"UPDATE funcionario SET nome_funcionario='".$funcionario->nome."', usuario='".$funcionario->usuario."', admin= ".$funcionario->admin." WHERE id_funcionario=".$funcionario->idfuncionario;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $update_query)
@@ -73,7 +73,7 @@ class FuncionarioDAO{
  		public function excluir($id){
 
  			/* Primeiro cria a query do MySQL */
- 			$delete_query = "DELETE FROM funcionario WHERE idfuncionario = ".$id;
+ 			$delete_query = "DELETE FROM funcionario WHERE id_funcionario = ".$id;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $delete_query)
@@ -85,7 +85,7 @@ class FuncionarioDAO{
  		public function listar(){
 
  			/* Primeiro cria a query do MySQL */
- 			$list_query = "SELECT * FROM funcionario ORDER BY nome";
+ 			$list_query = "SELECT * FROM funcionario ORDER BY nome_funcionario";
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
  			$result = mysqli_query($this->conexao, $list_query)
@@ -99,8 +99,8 @@ class FuncionarioDAO{
  				//Cria nova instância da classe Usuario
  				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idusuario = $row["idfuncionario"];
- 				$retorno->nome = $row["nome"];
+ 				$retorno->idusuario = $row["id_funcionario"];
+ 				$retorno->nome = $row["nome_funcionario"];
  				$retorno->usuario = $row["usuario"];
  				$retorno->senha = $row["senha"];
  				$retorno->admin = $row["admin"];
@@ -116,7 +116,7 @@ class FuncionarioDAO{
  		public function buscaPorId($id){
 
  			/* Primeiro cria a query do MySQL */
- 			$id_query = "SELECT * FROM funcionario WHERE idfuncionario = ".$id;
+ 			$id_query = "SELECT * FROM funcionario WHERE id_funcionario = ".$id;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
  			$result = mysqli_query($this->conexao, $id_query)
@@ -130,8 +130,8 @@ class FuncionarioDAO{
  				//Cria nova instância da classe Usuario
  				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idusuario = $row["idfuncionario"];
- 				$retorno->nome = $row["nome"];
+ 				$retorno->idusuario = $row["id_funcionario"];
+ 				$retorno->nome = $row["nome_funcionario"];
  				$retorno->usuario = $row["usuario"];
  				$retorno->senha = $row["senha"];
  				$retorno->admin = $row["admin"];
@@ -145,7 +145,7 @@ class FuncionarioDAO{
  		public function buscaPorNome($nome){
 
  			/* Primeiro cria a query do MySQL */
- 			$nome_query = "SELECT * FROM funcionario WHERE nome LIKE '%".$nome."%' ORDER BY nome";
+ 			$nome_query = "SELECT * FROM funcionario WHERE nome_funcionario LIKE '%".$nome."%' ORDER BY nome_funcionario";
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
  			$result = mysqli_query($this->conexao, $nome_query)
@@ -159,8 +159,8 @@ class FuncionarioDAO{
  				//Cria nova instância da classe Usuario
  				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idfuncionario= $row["idfuncionario"];
- 				$retorno->nome = $row["nome"];
+ 				$retorno->idfuncionario= $row["id_funcionario"];
+ 				$retorno->nome = $row["nome_funcionario"];
  				$retorno->usuario = $row["usuario"];
  				$retorno->senha = $row["senha"];
  				$retorno->admin = $row["admin"];
@@ -193,7 +193,7 @@ class FuncionarioDAO{
  				$retorno = new Funcionario();
  				//Preenche todos os campos do novo objeto
  				$retorno->idfuncionario = $row["idfuncionario"];
- 				$retorno->nome = $row["nome"];
+ 				$retorno->nome = $row["nome_funcionario"];
  				$retorno->usuario = $row["usuario"];
  				$retorno->senha = $row["senha"];
  				$retorno->admin = $row["admin"];

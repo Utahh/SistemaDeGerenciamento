@@ -13,7 +13,7 @@
 class Cliente{
 	public $idcliente;
 	public $nome;
-	public $CPF;
+	public $cpf;
 	public $telefone;
 }
 

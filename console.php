@@ -59,7 +59,7 @@ require_once("_script/CategoriaDAO.php");
                 <li class="dropdown">
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
                     	<span class="glyphicon glyphicon-user"></span>&nbsp;
-                    	<?php echo $_SESSION["nome_funcionario_logado"]." ".$_SESSION["sobrenome_funcionario_logado"]; ?>
+                    	<?php echo $_SESSION["nome_funcionario_logado"]; ?>
                     	<span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">

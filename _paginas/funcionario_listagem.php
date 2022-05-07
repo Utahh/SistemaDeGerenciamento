@@ -18,7 +18,7 @@
 			$funcionario = new Funcionario();
 			$funcionario->idusuario = $_POST["nIdEditar"];
 			$funcionario->nome = $_POST["nNomeEditar"];
-			$funcionario->usuario = strtolower($_POST["nEmailEditar"]);
+			$funcionario->usuario = strtolower($_POST["nUsuarioEditar"]);
 			$funcionario->admin = $_POST["nPermissaoEditar"];
 
 			$funcionarioDao = new FuncionarioDAO();

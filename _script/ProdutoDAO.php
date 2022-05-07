@@ -37,7 +37,7 @@ class ProdutoDAO{
  		public function inserir($produto){
 
  			/* Primeiro cria a query do MySQL */
- 			$insert_query =	"INSERT INTO produto (idproduto, nome, quantidade, custo, preco, descricao, idcategoria) VALUES (DEFAULT,'".$produto->nome."',".$produto->quantidade.",".$produto->custo.",".$produto->preco.",'".$produto->descricao."',".$produto->idcategoria.")";
+ 			$insert_query =	"INSERT INTO produtos (id_produtos, nome_produto, preco_produto, quantidade,id_categoria) VALUES (DEFAULT,'".$produto->nome."',".$produto->preco.",".$produto->quantidade.",".$produto->preco.",',".$produto->idcategoria.")";
 			
 			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $insert_query)
@@ -49,7 +49,7 @@ class ProdutoDAO{
  		public function atualizar($produto){
  			
  			/* Primeiro cria a query do MySQL */
- 			$update_query =	"UPDATE produto SET nome = '".$produto->nome."', quantidade = ".$produto->quantidade.", custo = ".$produto->custo.", preco = ".$produto->preco.", descricao = '".$produto->admin."', idcategoria = ".$produto->idcategoria." WHERE idproduto = ".$produto->idproduto;
+ 			$update_query =	"UPDATE produtos SET nome_produtos = '".$produto->nome."', preco_produto = ".$produto->preco.", quantidade= ".$produto->quantidade.", preco = ".$produto->preco.", id_categoria = ".$produto->idcategoria." WHERE id_produto = ".$produto->idproduto;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $update_query)
@@ -61,7 +61,7 @@ class ProdutoDAO{
  		public function excluir($id){
 
  			/* Primeiro cria a query do MySQL */
- 			$delete_query = "DELETE FROM produto WHERE idproduto = " . $id;
+ 			$delete_query = "DELETE FROM produtos WHERE id_produtos = " . $id;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
 			mysqli_query($this->conexao, $delete_query)
@@ -73,7 +73,7 @@ class ProdutoDAO{
  		public function listar(){
 
  			/* Primeiro cria a query do MySQL */
- 			$list_query = "SELECT * FROM produto ORDER BY nome";
+ 			$list_query = "SELECT * FROM produtos ORDER BY nome_produto";
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
  			$result = mysqli_query($this->conexao, $list_query)
@@ -87,13 +87,11 @@ class ProdutoDAO{
  				//Cria nova instância da classe Produto
  				$retorno = new Produto();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idproduto = $row["idproduto"];
- 				$retorno->nome = $row["nome"];
+ 				$retorno->idproduto = $row["id_produtos"];
+ 				$retorno->nome = $row["nome_produto"];
+ 				$retorno->preco = $row["preco_produto"];
  				$retorno->quantidade = $row["quantidade"];
- 				$retorno->custo = $row["custo"];
- 				$retorno->preco = $row["preco"];
- 				$retorno->descricao = $row["descricao"];
- 				$retorno->idcategoria = $row["idcategoria"];
+ 				$retorno->idcategoria = $row["id_categoria"];
  				//Coloca no array
  				$lista[] = $retorno;
  			}
@@ -120,13 +118,11 @@ class ProdutoDAO{
  				//Cria nova instância da classe produto
  				$retorno = new Produto();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idproduto = $row["idproduto"];
- 				$retorno->nome = $row["nome"];
+				$retorno->idproduto = $row["id_produtos"];
+ 				$retorno->nome = $row["nome_produto"];
+ 				$retorno->preco = $row["preco_produto"];
  				$retorno->quantidade = $row["quantidade"];
- 				$retorno->custo = $row["custo"];
- 				$retorno->preco = $row["preco"];
- 				$retorno->descricao = $row["descricao"];
- 				$retorno->idcategoria = $row["idcategoria"];
+ 				$retorno->idcategoria = $row["id_categoria"];
  			}
  			
  			return $retorno;
@@ -137,7 +133,7 @@ class ProdutoDAO{
  		public function buscaPorNome($nome){
 
  			/* Primeiro cria a query do MySQL */
- 			$nome_query = "SELECT * FROM produto WHERE nome LIKE = '%".$nome."%' ORDER BY nome";
+ 			$nome_query = "SELECT * FROM produtos WHERE nome_produto LIKE = '%".$nome."%' ORDER BY nome_produto";
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
  			$result = mysqli_query($this->conexao, $nome_query)
@@ -151,13 +147,11 @@ class ProdutoDAO{
  				//Cria nova instância da classe produto
  				$retorno = new Produto();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idproduto = $row["idproduto"];
- 				$retorno->nome = $row["nome"];
+ 				$retorno->idproduto = $row["id_produtos"];
+ 				$retorno->nome = $row["nome_produto"];
+ 				$retorno->preco = $row["preco_produto"];
  				$retorno->quantidade = $row["quantidade"];
- 				$retorno->custo = $row["custo"];
- 				$retorno->preco = $row["preco"];
- 				$retorno->descricao = $row["descricao"];
- 				$retorno->idcategoria = $row["idcategoria"];
+ 				$retorno->idcategoria = $row["id_categoria"];
  				//Coloca no array
  				$lista[] = $retorno;
  			}
@@ -170,7 +164,7 @@ class ProdutoDAO{
 		public function buscaPorCategoria($idcategoria){
 
  			/* Primeiro cria a query do MySQL */
- 			$id_query = "SELECT * FROM produto WHERE idcategoria = ".$idcategoria;
+ 			$id_query = "SELECT * FROM produtos WHERE id_categoria = ".$idcategoria;
 
  			/* Envia a query para o banco de dados e verifica se funcionou */
  			$result = mysqli_query($this->conexao, $id_query)
@@ -184,13 +178,11 @@ class ProdutoDAO{
  				//Cria nova instância da classe Usuario
  				$retorno = new Produto();
  				//Preenche todos os campos do novo objeto
- 				$retorno->idproduto = $row["idproduto"];
- 				$retorno->nome = $row["nome"];
+				 $retorno->idproduto = $row["id_produtos"];
+ 				$retorno->nome = $row["nome_produto"];
+ 				$retorno->preco = $row["preco_produto"];
  				$retorno->quantidade = $row["quantidade"];
- 				$retorno->custo = $row["custo"];
- 				$retorno->preco = $row["preco"];
- 				$retorno->descricao = $row["descricao"];
- 				$retorno->idcategoria = $row["idcategoria"];
+ 				$retorno->idcategoria = $row["id_categoria"];
  				//Coloca no array
  				$lista[] = $retorno;
  			}

@@ -11,7 +11,6 @@ ini_set('display_errors', 1);
 /* Inclui classe UsuarioDAO */
 require_once("FuncionarioDAO.php");
 
-
 /* Pega variáveis que vieram de index.php no método POST */
 $usuario = strtolower($_POST["nUsuario"]);
 $senha = $_POST["nSenha"];
@@ -22,15 +21,15 @@ $funcionarioDao = new FuncionarioDAO();
 
 /* Manda buscar os dados do usuário com e-mail igual ao recebido de index.php*/
 /* Se não encontrar nada no banco de dados, retorna null */
-$funcionario = $funcionarioDao->buscaPorUsuario($funcionario);
+$funcionario = $funcionarioDao->buscaPorUsuario($usuario);
 
 
 
 /* Testa se encontrou algum usuário cadastrado com aquele e-mail */
 if($funcionario != null){
 	/* Criptografa a senha recebida de index.php pra poder comparar */
-	$senhaCriptografada = md5($senha);
-
+	 $senhaCriptografada = md5($senha);
+	//$senhaCriptografada = $senha;
 	/* Agora testa se a senha recebida é igual à que consta do banco de dados*/
 	if($senhaCriptografada == $funcionario->senha){
 		/* Seta variáveis de sessão com informações do usuario logado*/

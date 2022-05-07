@@ -8,7 +8,7 @@ class GerenciadorConexao{
 	public static function conectar(){
 
 		/* Abre uma conexão com o servidor MySQL e retorna um identificador */
-		$conexao = mysqli_connect("127.0.0.1", "root", "","SistemaGerenciamento") or print(mysqli_connect_error());
+		$conexao = mysqli_connect("127.0.0.1", "root", "","sistema") or print(mysqli_connect_error());
 		//or die('Não foi possível estabelecer a conexão: ' . mysql_error() );
 		
 		/* Verifica se a conexão com o banco foi bem sucedida */

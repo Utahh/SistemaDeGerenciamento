@@ -11,10 +11,10 @@
  *----------------------------------------------------------------------------*/
 
 class Produto{
-	public $id_produtos;
-	public $nome_produto;
+	public $idproduto;
+	public $nome;
 	public $quantidade;
-	public $preco_produto;	
+	public $preco;	
 	public $descricao;
 	public $idcategoria;
 }
